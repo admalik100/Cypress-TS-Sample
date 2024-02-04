@@ -4,6 +4,7 @@
   "repository": "https://github.com/admalik100/Cypress-TS-Sample.git",
   "author": "admalik100 <ahmad.amir.malick@gmail.com>",
   "license": "MIT",
+  "type": "module",
   "devDependencies": {
     "cypress": "^13.6.4",
     "typescript": "^5.3.3"
