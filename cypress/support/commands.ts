@@ -25,13 +25,25 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 //
+Cypress.Commands.add('waitForProductLoading', () => {
+  cy.intercept('GET', '/seleniumPractise/data/products.json').as(
+    'waitForProductLoading',
+  );
+  cy.visit('/');
+
+  cy.wait('@waitForProductLoading')
+    .its('response.statusCode')
+    .should('equal', 200);
+});
+
 // declare global {
 //   namespace Cypress {
 //     interface Chainable {
-//       login(email: string, password: string): Chainable<void>
-//       drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
-//       visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>
+//       waitForProductLoading(hello: number): Chainable<void>;
+//       //   login(email: string, password: string): Chainable<void>
+//       //   drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
+//       //   dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
+//       //   visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>
 //     }
 //   }
 // }

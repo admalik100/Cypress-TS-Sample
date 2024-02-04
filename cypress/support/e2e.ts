@@ -14,7 +14,19 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
+import './commands';
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+
+declare global {
+  namespace Cypress {
+    interface Chainable {
+      waitForProductLoading(): Chainable<void>;
+      //   login(email: string, password: string): Chainable<void>
+      //   drag(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
+      //   dismiss(subject: string, options?: Partial<TypeOptions>): Chainable<Element>
+      //   visit(originalFn: CommandOriginalFn, url: string, options: Partial<VisitOptions>): Chainable<Element>
+    }
+  }
+}
